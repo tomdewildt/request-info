@@ -1,4 +1,4 @@
-name: Request Info
+name: triage
 
 on:
   issues:
@@ -14,7 +14,10 @@ jobs:
   request-info:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: ./
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run request info
+        uses: ./
         with:
           match-templates: "true"
