@@ -1,0 +1,49 @@
+{
+  "name": "request-info",
+  "description": "GitHub Action that flags issues and pull requests with missing or low-effort metadata.",
+  "version": "0.0.0",
+  "author": "Tom de Wildt",
+  "type": "module",
+  "private": true,
+  "homepage": "https://github.com/tomdewildt/request-info",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomdewildt/request-info.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tomdewildt/request-info/issues"
+  },
+  "keywords": [
+    "actions",
+    "github",
+    "triage"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "build": "vite build",
+    "lint": "eslint src/ test/",
+    "format": "prettier --check src/ test/",
+    "types": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.9.1",
+    "eslint": "^10.0.0",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.2",
+    "vite": "^7.1.12",
+    "vitest": "^3.2.4"
+  }
+}
