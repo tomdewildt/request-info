@@ -1,0 +1,55 @@
+name: Request Info
+description: Flag issues and pull requests with missing or low-effort metadata, post a single comment, and apply a label.
+author: Tom de Wildt
+
+branding:
+  icon: alert-circle
+  color: yellow
+
+inputs:
+  repo-token:
+    description: "Token with `issues: write` and `pull-requests: write` permissions."
+    required: false
+    default: ${{ github.token }}
+  label:
+    description: Label applied when the issue or pull request is flagged.
+    required: false
+    default: need-more-info
+  message:
+    description: Body of the comment posted when flagged. Set to empty string to skip commenting and only apply the label.
+    required: false
+    default: |-
+      Thanks for opening this!
+
+      It looks like the title or description is missing or matches a default placeholder.
+      Please update it with enough context for a maintainer to act on it - what you expected,
+      what happened, and how to reproduce (for issues) or what the change does and why
+      (for pull requests).
+
+      Following the issue/PR template helps a lot.
+  marker:
+    description: HTML comment used to dedupe re-runs on `edited` or `synchronize` events.
+    required: false
+    default: <!-- request-info-action -->
+  default-titles:
+    description: Newline- or comma-separated list of placeholder titles to flag. Case-insensitive.
+    required: false
+    default: "update, updates, test, issue, debug, demo"
+  min-title-length:
+    description: Minimum title length. Titles shorter than this are flagged.
+    required: false
+    default: "8"
+  match-templates:
+    description: When enabled, flag bodies that match an unfilled issue or pull-request template.
+    required: false
+    default: "true"
+
+outputs:
+  flagged:
+    description: '`"true"` or `"false"` so downstream steps can branch.'
+  reason:
+    description: '`"title"`, `"body"`, `"title_and_body"`, or `null` when not flagged.'
+
+runs:
+  using: node24
+  main: dist/index.js

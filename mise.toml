@@ -1,0 +1,26 @@
+[tools]
+node = "24.13.1"
+
+[tasks.init]
+description = "Initialize the environment"
+run = "npm install"
+
+[tasks.build]
+description = "Build the action bundle"
+run = "npm run build"
+
+[tasks.lint]
+description = "Run lint check"
+run = "npx eslint src/ test/"
+
+[tasks.format]
+description = "Run format check"
+run = "npx prettier --check src/ test/"
+
+[tasks.types]
+description = "Run type check"
+run = "npx tsc --noEmit"
+
+[tasks.test]
+description = "Run tests"
+run = "npm test"
