@@ -1,5 +1,8 @@
 # Request Info
 
+[![Version](https://img.shields.io/github/v/release/tomdewildt/request-info?label=version)](https://github.com/tomdewildt/request-info/releases)
+[![Build](https://img.shields.io/github/actions/workflow/status/tomdewildt/request-info/ci.yml?branch=master)](https://github.com/tomdewildt/request-info/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/actions/workflow/status/tomdewildt/request-info/cd.yml?label=release)](https://github.com/tomdewildt/request-info/actions/workflows/cd.yml)
 [![License](https://img.shields.io/github/license/tomdewildt/request-info)](https://github.com/tomdewildt/request-info/blob/master/LICENSE)
 
 A GitHub Action that flags issues and pull requests with missing or low-effort metadata, posts a single comment asking for more detail, and applies a configurable label.
