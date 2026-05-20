@@ -1,0 +1,52 @@
+name: cd
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install mise
+        uses: jdx/mise-action@v2
+
+      - name: Install dependencies
+        run: mise run init
+
+      - name: Run build
+        run: mise run build
+
+      - name: Commit dist
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f dist/
+          git commit -m "Build ${{ github.ref_name }}"
+          git tag -f ${{ github.ref_name }}
+          git push origin ${{ github.ref_name }} --force
+
+      - name: Update version tags
+        run: |
+          major=$(echo "${{ github.ref_name }}" | cut -d. -f1)
+          minor=$(echo "${{ github.ref_name }}" | cut -d. -f1-2)
+
+          git push origin :refs/tags/$major || true
+          git tag -f $major ${{ github.ref_name }}
+          git push origin $major
+
+          git push origin :refs/tags/$minor || true
+          git tag -f $minor ${{ github.ref_name }}
+          git push origin $minor
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
