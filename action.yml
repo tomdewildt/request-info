@@ -18,7 +18,7 @@ inputs:
   message:
     description: Body of the comment posted when flagged. Set to empty string to skip commenting and only apply the label.
     required: false
-    default: |-
+    default: >-
       Thanks for opening this!
 
       It looks like the title or description is missing or matches a default placeholder.
