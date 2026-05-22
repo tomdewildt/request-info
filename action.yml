@@ -21,10 +21,7 @@ inputs:
     default: >-
       Thanks for opening this!
 
-      It looks like the title or description is missing or matches a default placeholder.
-      Please update it with enough context for a maintainer to act on it - what you expected,
-      what happened, and how to reproduce (for issues) or what the change does and why
-      (for pull requests).
+      It looks like the title or description is missing or matches a default placeholder. Please update it with enough context for a maintainer to act on it: what you expected, what happened, and how to reproduce (for issues) or what the change does and why (for pull requests).
 
       Following the issue/PR template helps a lot.
   marker:
