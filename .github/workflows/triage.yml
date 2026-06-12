@@ -16,9 +16,6 @@ jobs:
       contents: read
       issues: write
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
-
       - name: Run issue labeler
         uses: github/issue-labeler@v3.4
         with:
@@ -36,9 +33,6 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
-
       - name: Run PR labeler
         uses: actions/labeler@v6
         with:
@@ -49,6 +43,7 @@ jobs:
     if: github.event.action == 'opened' || github.event.action == 'edited'
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       issues: write
       pull-requests: write
     steps:
@@ -76,9 +71,6 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
-
       - name: Run first interaction
         uses: tomdewildt/first-interaction@v1
         with:
